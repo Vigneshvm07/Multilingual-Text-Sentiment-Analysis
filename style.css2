@@ -1,0 +1,52 @@
+.dark-mode {
+    --bg: #0f1020;
+    --card: #18192b;
+    --text: #f5f5fa;
+    --muted: #a3a4b5;
+    --border: #2a2b40;
+}
+
+.dark-mode body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.dark-mode .navbar,
+.dark-mode .hero {
+    background: #111222;
+}
+
+.dark-mode .input-panel,
+.dark-mode .result-panel,
+.dark-mode .chart-card,
+.dark-mode .stats-card,
+.dark-mode .history-item,
+.dark-mode .empty-history,
+.dark-mode .workflow-card {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.dark-mode textarea,
+.dark-mode select,
+.dark-mode .metric,
+.dark-mode .detected-box,
+.dark-mode .stat-item {
+    background: #121326;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.dark-mode .workflow-section {
+    background: #111222;
+}
+
+.dark-mode .dashboard-section {
+    background: #0b0c17;
+}
+
+.dark-mode .theme-btn {
+    background: #202136;
+    color: white;
+    border-color: #33344d;
+}

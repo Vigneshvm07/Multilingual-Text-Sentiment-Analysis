@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PolySent | Multilingual Text Sentiment Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <div class="logo-icon">P</div>
+        <div>
+            <h2>PolySent</h2>
+            <span>Multilingual NLP</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#analyzer">Analyzer</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <button class="theme-btn" id="themeBtn">☾</button>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="badge">AI • NLP • MULTILINGUAL</span>
+
+        <h1>
+            Understand emotions
+            <span>across languages.</span>
+        </h1>
+
+        <p>
+            Analyze text sentiment in multiple languages using
+            multilingual natural language processing techniques.
+        </p>
+
+        <div class="hero-stats">
+            <div>
+                <strong>6+</strong>
+                <span>Languages</span>
+            </div>
+
+            <div>
+                <strong>3</strong>
+                <span>Sentiments</span>
+            </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Analysis</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+        <div class="floating-card card-main">
+            <div class="mini-label">LIVE ANALYSIS</div>
+            <h3>Sentiment Score</h3>
+
+            <div class="score-circle">
+                <span id="heroScore">78%</span>
+            </div>
+
+            <div class="positive-pill">Positive</div>
+        </div>
+
+        <div class="floating-card card-small">
+            <span>🌍</span>
+            <strong>6 Languages</strong>
+            <small>Supported</small>
+        </div>
+    </div>
+</section>
+
+
+<section class="analyzer-section" id="analyzer">
+
+    <div class="section-heading">
+        <span class="section-tag">TEXT ANALYZER</span>
+        <h2>Analyze multilingual text</h2>
+        <p>
+            Enter text in a supported language and discover its
+            sentiment, emotion, and linguistic patterns.
+        </p>
+    </div>
+
+    <div class="analyzer-grid">
+
+        <div class="input-panel">
+
+            <div class="panel-header">
+                <div>
+                    <h3>Enter your text</h3>
+                    <span id="charCount">0 / 1000 characters</span>
+                </div>
+
+                <select id="languageSelect">
+                    <option value="auto">🌐 Auto Detect</option>
+                    <option value="english">🇬🇧 English</option>
+                    <option value="tamil">🇮🇳 Tamil</option>
+                    <option value="hindi">🇮🇳 Hindi</option>
+                    <option value="spanish">🇪🇸 Spanish</option>
+                    <option value="french">🇫🇷 French</option>
+                    <option value="german">🇩🇪 German</option>
+                </select>
+            </div>
+
+            <textarea
+                id="textInput"
+                maxlength="1000"
+                placeholder="Type or paste text here...
+
+Example:
+I absolutely love this product. The quality is amazing and the service was excellent!"
+            ></textarea>
+
+            <div class="examples">
+                <span>Try an example:</span>
+
+                <button data-example="positive">
+                    Positive
+                </button>
+
+                <button data-example="negative">
+                    Negative
+                </button>
+
+                <button data-example="neutral">
+                    Neutral
+                </button>
+            </div>
+
+            <div class="action-row">
+                <button class="clear-btn" id="clearBtn">
+                    Clear
+                </button>
+
+                <button class="analyze-btn" id="analyzeBtn">
+                    Analyze Sentiment
+                    <span>→</span>
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="result-panel">
+
+            <div class="result-header">
+                <div>
+                    <span class="section-tag">ANALYSIS RESULT</span>
+                    <h3 id="resultTitle">Ready to analyze</h3>
+                </div>
+
+                <div class="language-result" id="detectedLanguage">
+                    🌐 Waiting
+                </div>
+            </div>
+
+            <div class="sentiment-result">
+
+                <div class="sentiment-icon" id="sentimentIcon">
+                    ✨
+                </div>
+
+                <div>
+                    <span class="result-label">Overall Sentiment</span>
+
+                    <h2 id="sentimentText">
+                        —
+                    </h2>
+
+                    <p id="sentimentDescription">
+                        Enter text to begin analysis.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="score-section">
+
+                <div class="score-header">
+                    <span>Sentiment Confidence</span>
+                    <strong id="confidenceValue">0%</strong>
+                </div>
+
+                <div class="progress">
+                    <div id="confidenceBar"></div>
+                </div>
+
+            </div>
+
+
+            <div class="metrics">
+
+                <div class="metric">
+                    <span>Positive</span>
+                    <strong id="positiveScore">0%</strong>
+                </div>
+
+                <div class="metric">
+                    <span>Negative</span>
+                    <strong id="negativeScore">0%</strong>
+                </div>
+
+                <div class="metric">
+                    <span>Neutral</span>
+                    <strong id="neutralScore">0%</strong>
+                </div>
+
+            </div>
+
+
+            <div class="detected-box">
+
+                <div>
+                    <span>Detected Emotion</span>
+                    <strong id="emotionResult">—</strong>
+                </div>
+
+                <div>
+                    <span>Text Length</span>
+                    <strong id="wordCount">0 words</strong>
+                </div>
+
+                <div>
+                    <span>Keywords</span>
+                    <strong id="keywordCount">0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section" id="dashboard">
+
+    <div class="section-heading">
+        <span class="section-tag">ANALYTICS</span>
+        <h2>Sentiment dashboard</h2>
+        <p>Visualize your multilingual sentiment analysis results.</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="chart-card">
+
+            <div class="card-heading">
+                <div>
+                    <h3>Sentiment Distribution</h3>
+                    <span>Current analysis</span>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <canvas id="sentimentChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <div class="stats-card">
+
+            <div class="stat-item">
+                <div class="stat-icon">📝</div>
+                <div>
+                    <span>Total Analyses</span>
+                    <strong id="totalAnalyses">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">🌍</div>
+                <div>
+                    <span>Languages Used</span>
+                    <strong id="languagesUsed">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">😊</div>
+                <div>
+                    <span>Positive Results</span>
+                    <strong id="positiveResults">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">📊</div>
+                <div>
+                    <span>Average Confidence</span>
+                    <strong id="averageConfidence">0%</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="history-section">
+
+    <div class="section-heading">
+        <span class="section-tag">HISTORY</span>
+        <h2>Recent analyses</h2>
+    </div>
+
+    <div class="history-list" id="historyList">
+
+        <div class="empty-history">
+            <div>🧠</div>
+            <h3>No analyses yet</h3>
+            <p>Your recent sentiment analyses will appear here.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="workflow-section" id="workflow">
+
+    <div class="section-heading">
+        <span class="section-tag">NLP WORKFLOW</span>
+        <h2>How PolySent works</h2>
+        <p>A simple multilingual NLP analysis pipeline.</p>
+    </div>
+
+    <div class="workflow-grid">
+
+        <div class="workflow-card">
+            <div class="workflow-number">01</div>
+            <div class="workflow-icon">📝</div>
+            <h3>Text Input</h3>
+            <p>
+                The user provides text in one of the supported
+                languages.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">02</div>
+            <div class="workflow-icon">🌐</div>
+            <h3>Language Detection</h3>
+            <p>
+                The system identifies the language and prepares
+                the text for analysis.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">03</div>
+            <div class="workflow-icon">🧠</div>
+            <h3>NLP Processing</h3>
+            <p>
+                Text is processed using multilingual sentiment
+                and emotion rules.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">04</div>
+            <div class="workflow-icon">📊</div>
+            <h3>Result</h3>
+            <p>
+                Sentiment, confidence, emotion, and keywords
+                are displayed visually.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about-section" id="about">
+
+    <div class="about-content">
+
+        <span class="section-tag">ABOUT PROJECT</span>
+
+        <h2>Multilingual NLP for global communication</h2>
+
+        <p>
+            Multilingual Text Sentiment Analysis is an NLP-based
+            system designed to identify the emotional polarity
+            of text written in different languages.
+        </p>
+
+        <p>
+            The project demonstrates how natural language
+            processing can be applied to customer reviews,
+            social media posts, feedback, surveys, and
+            multilingual communication.
+        </p>
+
+        <div class="feature-list">
+
+            <div>
+                <span>✓</span>
+                Multilingual text processing
+            </div>
+
+            <div>
+                <span>✓</span>
+                Sentiment classification
+            </div>
+
+            <div>
+                <span>✓</span>
+                Emotion detection
+            </div>
+
+            <div>
+                <span>✓</span>
+                Confidence scoring
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        <div class="logo-icon">P</div>
+        <div>
+            <strong>PolySent</strong>
+            <span>Multilingual NLP</span>
+        </div>
+    </div>
+
+    <p>
+        Multilingual Text Sentiment Analysis • NLP Academic Project
+    </p>
+
+    <span>
+        © 2026 PolySent. All rights reserved.
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
